@@ -1,6 +1,7 @@
 {
   "name": "api-node.js-banco-de-dados",
   "version": "1.0.0",
+  "type": "module",
   "description": "Criando uma API do zero com Node.js e Banco de dados",
   "main": "index.js",
   "scripts": {
