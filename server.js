@@ -8,11 +8,11 @@ const users = [];
 app.post("/usuarios", (request, response) => {
   users.push(request.body);
 
-  response.send("Usuario criado com sucesso!!");
+  response.status(201).json(request.body);
 });
 
 app.get("/usuarios", (request, response) => {
-  response.json(users);
+  response.status(200).json(users);
 });
 
 app.listen(3000);
@@ -23,3 +23,7 @@ app.listen(3000);
 // listar todos os usuarios
 // Editar um usuario
 // Deletar um usuario
+
+// senha banco de dados:
+// mYWjjNB9lJe9aZgc
+// brunahasting99
