@@ -1,12 +1,24 @@
 import express from "express";
+import { PrismaClient } from "./generated/prisma/";
+
+const prisma = new PrismaClient();
 
 const app = express();
 app.use(express.json());
 
 const users = [];
 
-app.post("/usuarios", (request, response) => {
-  users.push(request.body);
+app.post("/usuarios", async (request, response) => {
+  // funcoes assincronas precisam desse await na frente!
+  // e toda vez que tiver await, a minha funcao precisa ser assincrona
+
+  await prisma.user.create({
+    data: {
+      name: request.body.name,
+      age: request.body.age,
+      email: request.body.email,
+    },
+  });
 
   response.status(201).json(request.body);
 });
@@ -23,7 +35,3 @@ app.listen(3000);
 // listar todos os usuarios
 // Editar um usuario
 // Deletar um usuario
-
-// senha banco de dados:
-// mYWjjNB9lJe9aZgc
-// brunahasting99
